@@ -23,21 +23,21 @@ In the _experiments_ folder, all experimental scripts as well as the log files (
 The experiment files' names relate to the paper's results in the following way:
 
 ### Experiment 1 (Table 2) - Loss and Model variants
-* __exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt__ (Strongly-aligned training (BCE loss))
-* exp118b_traintest_schubert_sctcthreecomp_pitch.pt (Separable CTC (SCTC) loss)
-* exp118d_traintest_schubert_mctcnethreecomp_pitch.pt (Non-Epsilon MCTC (MCTC:NE) loss)
-* exp118e_traintest_schubert_mctcwe_pitch.pt (MCTC with epsilon (MCTC:WE) loss)
+* _exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt__ (Strongly-aligned training (BCE loss))
+* _exp118b_traintest_schubert_sctcthreecomp_pitch.pt_ (Separable CTC (SCTC) loss)
+* _exp118d_traintest_schubert_mctcnethreecomp_pitch.pt_ (Non-Epsilon MCTC (MCTC:NE) loss)
+* _exp118e_traintest_schubert_mctcwe_pitch.pt_ (MCTC with epsilon (MCTC:WE) loss)
 
 ### Experiment 2 (Section 3.2) - Train/test on common datasets
-* exp121a_traintest_musicnet_mctcwe_pitch_basiccnn.pt (Train/test MusicNet with strongly-aligned training)
-* exp121cS_traintest_musicnet_aligned_pitch_basiccnn_segmmodel.pt (Train/test MusicNet with MCTC loss)
-* exp122a_traintest_maestro_mctcwe_pitch_basiccnn.pt (Train/test MAESTRO with strongly-aligned training)
-* exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel.pt (Train/test MAESTRO with MCTC loss)
+* _exp121a_traintest_musicnet_mctcwe_pitch_basiccnn.pt_ (Train/test MusicNet with strongly-aligned training)
+* _exp121cS_traintest_musicnet_aligned_pitch_basiccnn_segmmodel.pt_ (Train/test MusicNet with MCTC loss)
+* _exp122a_traintest_maestro_mctcwe_pitch_basiccnn.pt_ (Train/test MAESTRO with strongly-aligned training)
+* _exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel.pt_ (Train/test MAESTRO with MCTC loss)
 
 ### Experiment 3 (Figure 2) - Cross-dataset experiment
-* exp123a_trainmaestromunet_testmix_mctcwe_pitch_basiccnn.pt (Train MusicNet & MAESTRO, test others, MCTC)
-* exp123cS_trainmaestromunet_testmix_aligned_pitch_basiccnn_segmmodel.pt (Train MusicNet & MAESTRO, test others, aligned)
-* exp124a_trainmix_testmusicnet_mctcwe_pitch_basiccnn.pt  (Test MusicNet, train others, MCTC)
-* exp124cS_trainmix_testmusicnet_aligned_pitch_basiccnn_segmmodel.pt (Test MusicNet, train others aligned)
-* exp125a_trainmix_testmaestro_mctcwe_pitch_basiccnn.pt (Test MAESTRO, train others MCTC)
-* exp125cS_trainmix_testmaestro_aligned_pitch_basiccnn_segmmodel.pt (Test MAESTRO, train others aligned)
+* _exp123a_trainmaestromunet_testmix_mctcwe_pitch_basiccnn.pt_ (Train MusicNet & MAESTRO, test others, MCTC)
+* _exp123cS_trainmaestromunet_testmix_aligned_pitch_basiccnn_segmmodel.pt_ (Train MusicNet & MAESTRO, test others, aligned)
+* _exp124a_trainmix_testmusicnet_mctcwe_pitch_basiccnn.pt_ (Test MusicNet, train others, MCTC)
+* _exp124cS_trainmix_testmusicnet_aligned_pitch_basiccnn_segmmodel.pt_ (Test MusicNet, train others aligned)
+* _exp125a_trainmix_testmaestro_mctcwe_pitch_basiccnn.pt_ (Test MAESTRO, train others MCTC)
+* _exp125cS_trainmix_testmaestro_aligned_pitch_basiccnn_segmmodel.pt_ (Test MAESTRO, train others aligned)
