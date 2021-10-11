@@ -9,7 +9,7 @@ This is a pytorch code repository accompanying the following paper:
 This repository only contains exemplary code and pre-trained models for most of the paper's experiments as well as some individual examples. All datasets used in the paper are publicly available (at least partially), e.g. our main datasets:
 * [Schubert Winterreise Dataset (SWD)](https://zenodo.org/record/5139893#.YWRcktpBxaQ)
 * [MusicNet](https://homes.cs.washington.edu/~thickstn/musicnet.html)
-* [MAESTRO v3.0.0](https://magenta.tensorflow.org/datasets/maestro)
+* [MAESTRO v3.0.0](https://magenta.tensorflow.org/datasets/maestro)  
 For details and references, please see the paper.
 
 ## Feature extraction and prediction (Jupyter notebooks)
