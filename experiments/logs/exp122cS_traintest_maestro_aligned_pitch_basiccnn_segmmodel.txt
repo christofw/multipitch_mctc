@@ -1,0 +1,457 @@
+2021-04-20 11:20:30 | INFO : Logging experiment exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel
+2021-04-20 11:20:30 | INFO : Experiment config: do training = True
+2021-04-20 11:20:30 | INFO : Experiment config: do validation = True
+2021-04-20 11:20:30 | INFO : Experiment config: do testing = True
+2021-04-20 11:20:30 | INFO : Training set parameters: {'context': 75, 'stride': 50, 'compression': 10}
+2021-04-20 11:20:30 | INFO : Validation set parameters: {'context': 75, 'stride': 50, 'compression': 10}
+2021-04-20 11:20:30 | INFO : Test set parameters: {'context': 75, 'stride': 1, 'compression': 10}
+2021-04-20 11:20:30 | INFO : Training parameters: {'batch_size': 25, 'shuffle': True, 'num_workers': 16}
+2021-04-20 11:20:30 | INFO : Trained model saved in /ldaphome/cweiss/models/exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel.pt
+2021-04-20 11:20:30 | INFO :  --- Training config: ----------------------------------------- 
+2021-04-20 11:20:30 | INFO : Maximum number of epochs: 100
+2021-04-20 11:20:30 | INFO : Criterion (Loss): BCELoss
+2021-04-20 11:20:30 | INFO : Optimizer parameters: {'name': 'SGD', 'initial_lr': 0.01, 'momentum': 0.9}
+2021-04-20 11:20:30 | INFO : Scheduler parameters: {'use_scheduler': True, 'name': 'ReduceLROnPlateau', 'mode': 'min', 'factor': 0.5, 'patience': 5, 'threshold': 0.0001, 'threshold_mode': 'rel', 'cooldown': 0, 'min_lr': 1e-06, 'eps': 1e-08, 'verbose': False}
+2021-04-20 11:20:30 | INFO : Early stopping parameters: {'use_early_stopping': True, 'mode': 'min', 'min_delta': 1e-05, 'patience': 12, 'percentage': False}
+2021-04-20 11:20:30 | INFO : Test parameters: {'batch_size': 50, 'shuffle': False, 'num_workers': 8}
+2021-04-20 11:20:30 | INFO : Save filewise results = True, in folder /ldaphome/cweiss/code/deep_pitch_estimation/experiments/results_filewise/exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel.csv
+2021-04-20 11:20:30 | INFO : Save model predictions = True, in folder /ldaphome/cweiss/predictions/exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel
+2021-04-20 11:20:31 | INFO : CUDA use_cuda: True
+2021-04-20 11:20:31 | INFO : CUDA device: cuda:0
+2021-04-20 11:24:08 | INFO :  --- Model config: -------------------------------------------- 
+2021-04-20 11:24:08 | INFO : Model: basic_cnn_segm_sigmoid
+2021-04-20 11:24:08 | INFO : Model parameters: {'n_chan_input': 6, 'n_chan_layers': [20, 20, 10, 1], 'n_ch_out': 2, 'n_bins_in': 216, 'n_bins_out': 72, 'a_lrelu': 0.3, 'p_dropout': 0.2}
+2021-04-20 11:24:32 | INFO : 
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+├─LayerNorm: 1-1                         [1, 174, 6, 216]          2,592
+├─Sequential: 1-2                        [1, 20, 174, 216]         --
+|    └─Conv2d: 2-1                       [1, 20, 174, 216]         27,020
+|    └─LeakyReLU: 2-2                    [1, 20, 174, 216]         --
+|    └─MaxPool2d: 2-3                    [1, 20, 174, 216]         --
+|    └─Dropout: 2-4                      [1, 20, 174, 216]         --
+├─Sequential: 1-3                        [1, 20, 174, 72]          --
+|    └─Conv2d: 2-5                       [1, 20, 174, 72]          3,620
+|    └─LeakyReLU: 2-6                    [1, 20, 174, 72]          --
+|    └─MaxPool2d: 2-7                    [1, 20, 174, 72]          --
+|    └─Dropout: 2-8                      [1, 20, 174, 72]          --
+├─Sequential: 1-4                        [1, 10, 100, 72]          --
+|    └─Conv2d: 2-9                       [1, 10, 100, 72]          15,010
+|    └─LeakyReLU: 2-10                   [1, 10, 100, 72]          --
+|    └─Dropout: 2-11                     [1, 10, 100, 72]          --
+├─Sequential: 1-5                        [1, 1, 100, 72]           --
+|    └─Conv2d: 2-12                      [1, 1, 100, 72]           11
+|    └─LeakyReLU: 2-13                   [1, 1, 100, 72]           --
+|    └─Dropout: 2-14                     [1, 1, 100, 72]           --
+|    └─Conv2d: 2-15                      [1, 1, 100, 72]           2
+|    └─Sigmoid: 2-16                     [1, 1, 100, 72]           --
+==========================================================================================
+Total params: 48,255
+Trainable params: 48,255
+Non-trainable params: 0
+Total mult-adds (G): 1.17
+==========================================================================================
+Input size (MB): 0.90
+Forward/backward pass size (MB): 10.51
+Params size (MB): 0.19
+Estimated Total Size (MB): 11.61
+==========================================================================================
+2021-04-20 11:24:44 | INFO :  - file MIDI-Unprocessed_24_R1_2006_01-05_ORIG_MID--AUDIO_24_R1_2006_04_Track04_wav.npy added to training set.
+2021-04-20 11:25:13 | INFO :  - file MIDI-Unprocessed_07_R2_2006_01_ORIG_MID--AUDIO_07_R2_2006_01_Track01_wav.npy added to training set.
+2021-04-20 11:25:27 | INFO :  - file MIDI-Unprocessed_01_R1_2008_01-04_ORIG_MID--AUDIO_01_R1_2008_wav--1.npy added to training set.
+2021-04-20 11:26:30 | INFO :  - file MIDI-Unprocessed_Recital5-7_MID--AUDIO_06_R1_2018_wav--2.npy added to training set.
+2021-04-20 11:27:00 | INFO :  - file MIDI-Unprocessed_R2_D1-2-3-6-7-8-11_mid--AUDIO-from_mp3_07_R2_2015_wav--2.npy added to training set.
+2021-04-20 11:27:05 | INFO :  - file ORIG-MIDI_02_7_7_13_Group__MID--AUDIO_19_R1_2013_wav--3.npy added to training set.
+2021-04-20 11:28:07 | INFO :  - file MIDI-Unprocessed_XP_10_R1_2004_05_ORIG_MID--AUDIO_10_R1_2004_05_Track05_wav.npy added to training set.
+2021-04-20 11:28:32 | INFO :  - file MIDI-Unprocessed_057_PIANO057_MID--AUDIO-split_07-07-17_Piano-e_1-07_wav--5.npy added to training set.
+2021-04-20 11:28:40 | INFO :  - file MIDI-Unprocessed_09_R1_2009_01-04_ORIG_MID--AUDIO_09_R1_2009_09_R1_2009_02_WAV.npy added to training set.
+2021-04-20 11:29:16 | INFO :  - file MIDI-Unprocessed_082_PIANO082_MID--AUDIO-split_07-09-17_Piano-e_2_-04_wav--2.npy added to training set.
+2021-04-20 11:29:28 | INFO :  - file MIDI-Unprocessed_054_PIANO054_MID--AUDIO-split_07-07-17_Piano-e_1-02_wav--3.npy added to training set.
+2021-04-20 11:29:38 | INFO :  - file MIDI-Unprocessed_13_R1_2006_01-06_ORIG_MID--AUDIO_13_R1_2006_04_Track04_wav.npy added to training set.
+2021-04-20 11:29:57 | INFO :  - file ORIG-MIDI_01_7_7_13_Group__MID--AUDIO_12_R1_2013_wav--5.npy added to training set.
+2021-04-20 11:30:18 | INFO :  - file MIDI-Unprocessed_10_R1_2011_MID--AUDIO_R1-D4_02_Track02_wav.npy added to training set.
+2021-04-20 11:31:16 | INFO :  - file ORIG-MIDI_03_7_10_13_Group_MID--AUDIO_17_R3_2013_wav--3.npy added to training set.
+2021-04-20 11:31:53 | INFO :  - file MIDI-Unprocessed_12_R1_2009_03-05_ORIG_MID--AUDIO_12_R1_2009_12_R1_2009_03_WAV.npy added to training set.
+2021-04-20 11:32:14 | INFO :  - file MIDI-Unprocessed_07_R2_2009_01_ORIG_MID--AUDIO_07_R2_2009_07_R2_2009_02_WAV.npy added to training set.
+2021-04-20 11:32:56 | INFO :  - file MIDI-Unprocessed_SMF_16_R1_2004_01-08_ORIG_MID--AUDIO_16_R1_2004_13_Track13_wav.npy added to training set.
+2021-04-20 11:33:01 | INFO :  - file MIDI-UNPROCESSED_21-22_R1_2014_MID--AUDIO_21_R1_2014_wav--1.npy added to training set.
+2021-04-20 11:33:05 | INFO :  - file MIDI-UNPROCESSED_09-10_R1_2014_MID--AUDIO_10_R1_2014_wav--1.npy added to training set.
+2021-04-20 11:33:26 | INFO :  - file MIDI-Unprocessed_056_PIANO056_MID--AUDIO-split_07-07-17_Piano-e_1-05_wav--3.npy added to training set.
+2021-04-20 11:33:38 | INFO :  - file ORIG-MIDI_03_7_6_13_Group__MID--AUDIO_09_R1_2013_wav--2.npy added to training set.
+2021-04-20 11:33:52 | INFO :  - file MIDI-Unprocessed_SMF_05_R1_2004_01_ORIG_MID--AUDIO_05_R1_2004_03_Track03_wav.npy added to training set.
+2021-04-20 11:34:54 | INFO :  - file MIDI-Unprocessed_XP_18_R1_2004_04_ORIG_MID--AUDIO_18_R1_2004_07_Track07_wav.npy added to training set.
+2021-04-20 11:35:14 | INFO :  - file MIDI-Unprocessed_066_PIANO066_MID--AUDIO-split_07-07-17_Piano-e_3-02_wav--3.npy added to training set.
+2021-04-20 11:35:26 | INFO :  - file MIDI-Unprocessed_11_R1_2008_01-04_ORIG_MID--AUDIO_11_R1_2008_wav--1.npy added to training set.
+2021-04-20 11:35:41 | INFO :  - file ORIG-MIDI_01_7_10_13_Group_MID--AUDIO_08_R3_2013_wav--1.npy added to training set.
+2021-04-20 11:35:56 | INFO :  - file MIDI-Unprocessed_SMF_17_R1_2004_01-02_ORIG_MID--AUDIO_20_R2_2004_02_Track02_wav.npy added to training set.
+2021-04-20 11:36:41 | INFO :  - file MIDI-Unprocessed_SMF_02_R1_2004_01-05_ORIG_MID--AUDIO_02_R1_2004_05_Track05_wav.npy added to training set.
+2021-04-20 11:36:54 | INFO :  - file MIDI-Unprocessed_XP_04_R1_2004_03-05_ORIG_MID--AUDIO_04_R1_2004_05_Track05_wav.npy added to training set.
+2021-04-20 11:37:49 | INFO :  - file MIDI-Unprocessed_21_R1_2009_01-03_ORIG_MID--AUDIO_21_R1_2009_21_R1_2009_01_WAV.npy added to training set.
+2021-04-20 11:37:54 | INFO :  - file MIDI-Unprocessed_042_PIANO042_MID--AUDIO-split_07-06-17_Piano-e_1-02_wav--2.npy added to training set.
+2021-04-20 11:38:49 | INFO :  - file MIDI-Unprocessed_02_R1_2009_01-02_ORIG_MID--AUDIO_02_R1_2009_02_R1_2009_02_WAV.npy added to training set.
+2021-04-20 11:39:16 | INFO :  - file MIDI-Unprocessed_22_R3_2011_MID--AUDIO_R3-D7_03_Track03_wav.npy added to training set.
+2021-04-20 11:39:48 | INFO :  - file MIDI-Unprocessed_SMF_07_R1_2004_01_ORIG_MID--AUDIO_07_R1_2004_06_Track06_wav.npy added to training set.
+2021-04-20 11:40:13 | INFO :  - file MIDI-Unprocessed_11_R1_2006_01-06_ORIG_MID--AUDIO_11_R1_2006_04_Track04_wav.npy added to training set.
+2021-04-20 11:40:25 | INFO :  - file ORIG-MIDI_01_7_8_13_Group__MID--AUDIO_03_R2_2013_wav--2.npy added to training set.
+2021-04-20 11:41:08 | INFO :  - file MIDI-Unprocessed_01_R1_2006_01-09_ORIG_MID--AUDIO_01_R1_2006_03_Track03_wav.npy added to training set.
+2021-04-20 11:41:15 | INFO :  - file MIDI-Unprocessed_01_R1_2011_MID--AUDIO_R1-D1_05_Track05_wav.npy added to training set.
+2021-04-20 11:41:32 | INFO :  - file MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_18_R1_2015_wav--1.npy added to training set.
+2021-04-20 11:41:46 | INFO :  - file MIDI-Unprocessed_R2_D2-12-13-15_mid--AUDIO-from_mp3_13_R2_2015_wav--3.npy added to training set.
+2021-04-20 11:41:50 | INFO :  - file MIDI-Unprocessed_11_R1_2009_01-05_ORIG_MID--AUDIO_11_R1_2009_11_R1_2009_03_WAV.npy added to training set.
+2021-04-20 11:41:58 | INFO :  - file MIDI-Unprocessed_01_R1_2011_MID--AUDIO_R1-D1_02_Track02_wav.npy added to training set.
+2021-04-20 11:42:25 | INFO :  - file MIDI-Unprocessed_081_PIANO081_MID--AUDIO-split_07-09-17_Piano-e_2_-02_wav--3.npy added to training set.
+2021-04-20 11:43:42 | INFO :  - file MIDI-Unprocessed_Recital13-15_MID--AUDIO_13_R1_2018_wav--2.npy added to training set.
+2021-04-20 11:43:47 | INFO :  - file MIDI-Unprocessed_02_R2_2008_01-05_ORIG_MID--AUDIO_02_R2_2008_wav--4.npy added to training set.
+2021-04-20 11:43:55 | INFO :  - file MIDI-Unprocessed_XP_22_R2_2004_01_ORIG_MID--AUDIO_22_R2_2004_03_Track03_wav.npy added to training set.
+2021-04-20 11:44:14 | INFO :  - file MIDI-Unprocessed_R1_D1-1-8_mid--AUDIO-from_mp3_01_R1_2015_wav--1.npy added to training set.
+2021-04-20 11:44:22 | INFO :  - file MIDI-Unprocessed_060_PIANO060_MID--AUDIO-split_07-07-17_Piano-e_2-04_wav--1.npy added to training set.
+2021-04-20 11:44:53 | INFO :  - file MIDI-Unprocessed_072_PIANO072_MID--AUDIO-split_07-08-17_Piano-e_1-06_wav--1.npy added to training set.
+2021-04-20 11:45:16 | INFO :  - file MIDI-Unprocessed_R2_D1-2-3-6-7-8-11_mid--AUDIO-from_mp3_08_R2_2015_wav--3.npy added to training set.
+2021-04-20 11:45:41 | INFO :  - file MIDI-Unprocessed_047_PIANO047_MID--AUDIO-split_07-06-17_Piano-e_2-04_wav--3.npy added to training set.
+2021-04-20 11:46:24 | INFO :  - file MIDI-Unprocessed_Recital1-3_MID--AUDIO_02_R1_2018_wav--2.npy added to training set.
+2021-04-20 11:46:30 | INFO :  - file MIDI-Unprocessed_11_R1_2011_MID--AUDIO_R1-D4_11_Track11_wav.npy added to training set.
+2021-04-20 11:46:58 | INFO :  - file MIDI-Unprocessed_SMF_17_R1_2004_01-03_ORIG_MID--AUDIO_17_R1_2004_06_Track06_wav.npy added to training set.
+2021-04-20 11:47:28 | INFO :  - file MIDI-UNPROCESSED_06-08_R1_2014_MID--AUDIO_07_R1_2014_wav--4.npy added to training set.
+2021-04-20 11:47:43 | INFO :  - file MIDI-Unprocessed_Recital5-7_MID--AUDIO_07_R1_2018_wav--3.npy added to training set.
+2021-04-20 11:48:12 | INFO :  - file MIDI-Unprocessed_07_R1_2008_01-04_ORIG_MID--AUDIO_07_R1_2008_wav--4.npy added to training set.
+2021-04-20 11:48:43 | INFO :  - file MIDI-Unprocessed_R2_D2-19-21-22_mid--AUDIO-from_mp3_21_R2_2015_wav--2.npy added to training set.
+2021-04-20 11:48:48 | INFO :  - file MIDI-Unprocessed_R1_D1-9-12_mid--AUDIO-from_mp3_10_R1_2015_wav--2.npy added to training set.
+2021-04-20 11:49:19 | INFO :  - file MIDI-Unprocessed_24_R1_2006_01-05_ORIG_MID--AUDIO_24_R1_2006_02_Track02_wav.npy added to training set.
+2021-04-20 11:49:50 | INFO :  - file MIDI-Unprocessed_09_R1_2009_01-04_ORIG_MID--AUDIO_09_R1_2009_09_R1_2009_04_WAV.npy added to training set.
+2021-04-20 11:50:25 | INFO :  - file MIDI-UNPROCESSED_04-05_R1_2014_MID--AUDIO_05_R1_2014_wav--7.npy added to training set.
+2021-04-20 11:50:39 | INFO :  - file MIDI-Unprocessed_R1_D2-21-22_mid--AUDIO-from_mp3_22_R1_2015_wav--1.npy added to training set.
+2021-04-20 11:51:12 | INFO :  - file MIDI-Unprocessed_23_R2_2006_01_ORIG_MID--AUDIO_23_R2_2006_02_Track02_wav.npy added to training set.
+2021-04-20 11:51:27 | INFO :  - file MIDI-Unprocessed_060_PIANO060_MID--AUDIO-split_07-07-17_Piano-e_2-04_wav--4.npy added to training set.
+2021-04-20 11:51:44 | INFO :  - file MIDI-UNPROCESSED_06-08_R1_2014_MID--AUDIO_06_R1_2014_wav--1.npy added to training set.
+2021-04-20 11:52:01 | INFO :  - file MIDI-Unprocessed_045_PIANO045_MID--AUDIO-split_07-06-17_Piano-e_2-01_wav--4.npy added to training set.
+2021-04-20 11:52:32 | INFO :  - file MIDI-Unprocessed_02_R3_2008_01-03_ORIG_MID--AUDIO_02_R3_2008_wav--3.npy added to training set.
+2021-04-20 11:53:13 | INFO :  - file MIDI-Unprocessed_06_R1_2006_01-04_ORIG_MID--AUDIO_06_R1_2006_01_Track01_wav.npy added to training set.
+2021-04-20 11:54:04 | INFO :  - file MIDI-UNPROCESSED_16-18_R1_2014_MID--AUDIO_17_R1_2014_wav--1.npy added to training set.
+2021-04-20 11:54:37 | INFO :  - file MIDI-Unprocessed_XP_14_R2_2004_01_ORIG_MID--AUDIO_14_R2_2004_01_Track01_wav.npy added to training set.
+2021-04-20 11:55:15 | INFO :  - file MIDI-Unprocessed_10_R1_2006_01-04_ORIG_MID--AUDIO_10_R1_2006_05_Track05_wav.npy added to training set.
+2021-04-20 11:56:16 | INFO :  - file MIDI-UNPROCESSED_11-13_R1_2014_MID--AUDIO_11_R1_2014_wav--3.npy added to training set.
+2021-04-20 11:57:23 | INFO :  - file MIDI-Unprocessed_14_R1_2006_01-05_ORIG_MID--AUDIO_14_R1_2006_01_Track01_wav.npy added to training set.
+2021-04-20 11:57:30 | INFO :  - file MIDI-Unprocessed_R1_D1-1-8_mid--AUDIO-from_mp3_07_R1_2015_wav--3.npy added to training set.
+2021-04-20 11:57:40 | INFO :  - file MIDI-Unprocessed_21_R1_2011_MID--AUDIO_R1-D8_07_Track07_wav.npy added to training set.
+2021-04-20 11:58:10 | INFO :  - file MIDI-Unprocessed_16_R2_2006_01_ORIG_MID--AUDIO_16_R2_2006_03_Track03_wav.npy added to training set.
+2021-04-20 11:58:23 | INFO :  - file MIDI-Unprocessed_066_PIANO066_MID--AUDIO-split_07-07-17_Piano-e_3-02_wav--1.npy added to training set.
+2021-04-20 11:58:38 | INFO :  - file ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_05_R1_2013_wav--1.npy added to training set.
+2021-04-20 11:59:16 | INFO :  - file MIDI-Unprocessed_05_R1_2009_01-02_ORIG_MID--AUDIO_05_R1_2009_05_R1_2009_02_WAV.npy added to training set.
+2021-04-20 11:59:28 | INFO :  - file MIDI-Unprocessed_12_R2_2008_01-04_ORIG_MID--AUDIO_12_R2_2008_wav--2.npy added to training set.
+2021-04-20 11:59:50 | INFO :  - file MIDI-UNPROCESSED_14-15_R1_2014_MID--AUDIO_15_R1_2014_wav--1.npy added to training set.
+2021-04-20 12:00:09 | INFO :  - file MIDI-Unprocessed_19_R2_2009_01_ORIG_MID--AUDIO_19_R2_2009_19_R2_2009_02_WAV.npy added to training set.
+2021-04-20 12:00:25 | INFO :  - file MIDI-Unprocessed_R2_D2-12-13-15_mid--AUDIO-from_mp3_15_R2_2015_wav--1.npy added to training set.
+2021-04-20 12:00:37 | INFO :  - file MIDI-Unprocessed_03_R1_2011_MID--AUDIO_R1-D1_18_Track18_wav.npy added to training set.
+2021-04-20 12:01:06 | INFO :  - file MIDI-Unprocessed_XP_20_R2_2004_01_ORIG_MID--AUDIO_20_R1_2004_03_Track03_wav.npy added to training set.
+2021-04-20 12:01:12 | INFO :  - file MIDI-Unprocessed_041_PIANO041_MID--AUDIO-split_07-06-17_Piano-e_1-01_wav--1.npy added to training set.
+2021-04-20 12:01:45 | INFO :  - file ORIG-MIDI_02_7_10_13_Group_MID--AUDIO_12_R3_2013_wav--4.npy added to training set.
+2021-04-20 12:02:17 | INFO :  - file MIDI-Unprocessed_18_R1_2006_01-05_ORIG_MID--AUDIO_18_R1_2006_04_Track04_wav.npy added to training set.
+2021-04-20 12:02:36 | INFO :  - file MIDI-Unprocessed_15_R1_2008_01-04_ORIG_MID--AUDIO_15_R1_2008_wav--3.npy added to training set.
+2021-04-20 12:02:47 | INFO :  - file MIDI-Unprocessed_15_R1_2011_MID--AUDIO_R1-D6_07_Track07_wav.npy added to training set.
+2021-04-20 12:03:15 | INFO :  - file MIDI-Unprocessed_25_R3_2011_MID--AUDIO_R3-D9_04_Track04_wav.npy added to training set.
+2021-04-20 12:04:28 | INFO :  - file MIDI-Unprocessed_19_R1_2009_01-02_ORIG_MID--AUDIO_19_R1_2009_19_R1_2009_02_WAV.npy added to training set.
+2021-04-20 12:04:53 | INFO :  - file MIDI-Unprocessed_06_R1_2009_03-07_ORIG_MID--AUDIO_06_R1_2009_06_R1_2009_07_WAV.npy added to training set.
+2021-04-20 12:04:59 | INFO :  - file MIDI-Unprocessed_SMF_22_R1_2004_01-04_ORIG_MID--AUDIO_22_R1_2004_05_Track05_wav.npy added to training set.
+2021-04-20 12:05:04 | INFO :  - file MIDI-Unprocessed_043_PIANO043_MID--AUDIO-split_07-06-17_Piano-e_1-03_wav--3.npy added to training set.
+2021-04-20 12:05:29 | INFO :  - file MIDI-Unprocessed_SMF_17_R1_2004_01-03_ORIG_MID--AUDIO_17_R1_2004_03_Track03_wav.npy added to training set.
+2021-04-20 12:06:06 | INFO :  - file MIDI-UNPROCESSED_16-18_R1_2014_MID--AUDIO_18_R1_2014_wav--2.npy added to training set.
+2021-04-20 12:06:17 | INFO :  - file MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_20_R1_2015_wav--2.npy added to training set.
+2021-04-20 12:06:23 | INFO :  - file MIDI-Unprocessed_R1_D2-21-22_mid--AUDIO-from_mp3_21_R1_2015_wav--4.npy added to training set.
+2021-04-20 12:07:25 | INFO :  - file MIDI-Unprocessed_20_R1_2006_01-04_ORIG_MID--AUDIO_20_R1_2006_04_Track04_wav.npy added to training set.
+2021-04-20 12:09:12 | INFO :  - file MIDI-Unprocessed_Schubert4-6_MID--AUDIO_09_R2_2018_wav.npy added to training set.
+2021-04-20 12:10:28 | INFO :  - file MIDI-Unprocessed_21_R1_2009_04_ORIG_MID--AUDIO_21_R1_2009_21_R1_2009_04_WAV.npy added to training set.
+2021-04-20 12:10:43 | INFO :  - file ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_08_R1_2013_wav--2.npy added to training set.
+2021-04-20 12:11:40 | INFO :  - file MIDI-Unprocessed_XP_04_R2_2004_01_ORIG_MID--AUDIO_04_R2_2004_02_Track02_wav.npy added to training set.
+2021-04-20 12:12:08 | INFO :  - file MIDI-Unprocessed_12_R1_2011_MID--AUDIO_R1-D4_14_Track14_wav.npy added to training set.
+2021-04-20 12:12:19 | INFO :  - file MIDI-Unprocessed_052_PIANO052_MID--AUDIO-split_07-06-17_Piano-e_3-03_wav--2.npy added to training set.
+2021-04-20 12:12:46 | INFO :  - file ORIG-MIDI_03_7_10_13_Group_MID--AUDIO_15_R3_2013_wav--1.npy added to training set.
+2021-04-20 12:13:07 | INFO :  - file ORIG-MIDI_01_7_7_13_Group__MID--AUDIO_13_R1_2013_wav--4.npy added to training set.
+2021-04-20 12:14:13 | INFO :  - file MIDI-Unprocessed_Recital13-15_MID--AUDIO_15_R1_2018_wav--4.npy added to training set.
+2021-04-20 12:14:28 | INFO :  - file MIDI-Unprocessed_SMF_17_R1_2004_01-03_ORIG_MID--AUDIO_17_R1_2004_02_Track02_wav--1.npy added to training set.
+2021-04-20 12:15:35 | INFO :  - file MIDI-Unprocessed_XP_01_R1_2004_03_ORIG_MID--AUDIO_01_R1_2004_04_Track04_wav.npy added to training set.
+2021-04-20 12:15:49 | INFO :  - file MIDI-Unprocessed_16_R1_2008_01-04_ORIG_MID--AUDIO_16_R1_2008_wav--2.npy added to training set.
+2021-04-20 12:16:46 | INFO :  - file MIDI-Unprocessed_10_R1_2006_01-04_ORIG_MID--AUDIO_10_R1_2006_02_Track02_wav.npy added to training set.
+2021-04-20 12:17:00 | INFO :  - file MIDI-Unprocessed_09_R2_2011_MID--AUDIO_R2-D3_04_Track04_wav.npy added to training set.
+2021-04-20 12:17:09 | INFO :  - file ORIG-MIDI_03_7_6_13_Group__MID--AUDIO_09_R1_2013_wav--1.npy added to training set.
+2021-04-20 12:17:21 | INFO :  - file MIDI-Unprocessed_16_R1_2008_01-04_ORIG_MID--AUDIO_16_R1_2008_wav--4.npy added to training set.
+2021-04-20 12:17:37 | INFO :  - file MIDI-Unprocessed_09_R1_2008_01-05_ORIG_MID--AUDIO_09_R1_2008_wav--5.npy added to training set.
+2021-04-20 12:18:05 | INFO :  - file MIDI-Unprocessed_07_R3_2008_01-05_ORIG_MID--AUDIO_07_R3_2008_wav--2.npy added to training set.
+2021-04-20 12:18:13 | INFO :  - file MIDI-Unprocessed_02_R1_2008_01-05_ORIG_MID--AUDIO_02_R1_2008_wav--1.npy added to training set.
+2021-04-20 12:18:36 | INFO :  - file MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_14_R1_2015_wav--1.npy added to training set.
+2021-04-20 12:18:41 | INFO :  - file ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_08_R1_2013_wav--1.npy added to training set.
+2021-04-20 12:18:44 | INFO :  - file MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_20_R1_2015_wav--3.npy added to training set.
+2021-04-20 12:18:54 | INFO :  - file MIDI-Unprocessed_17_R2_2009_01_ORIG_MID--AUDIO_17_R2_2009_17_R2_2009_02_WAV.npy added to training set.
+2021-04-20 12:19:16 | INFO :  - file MIDI-Unprocessed_080_PIANO080_MID--AUDIO-split_07-09-17_Piano-e_1-06_wav--1.npy added to training set.
+2021-04-20 12:19:31 | INFO :  - file MIDI-Unprocessed_25_R2_2011_MID--AUDIO_R2-D6_08_Track08_wav.npy added to training set.
+2021-04-20 12:19:59 | INFO :  - file MIDI-Unprocessed_07_R1_2006_01-04_ORIG_MID--AUDIO_07_R1_2006_02_Track02_wav.npy added to training set.
+2021-04-20 12:20:12 | INFO :  - file MIDI-Unprocessed_SMF_13_01_2004_01-05_ORIG_MID--AUDIO_13_R1_2004_08_Track08_wav.npy added to training set.
+2021-04-20 12:20:33 | INFO :  - file MIDI-UNPROCESSED_21-22_R1_2014_MID--AUDIO_21_R1_2014_wav--4.npy added to training set.
+2021-04-20 12:20:54 | INFO :  - file MIDI-Unprocessed_XP_21_R1_2004_02_ORIG_MID--AUDIO_21_R1_2004_02_Track02_wav.npy added to training set.
+2021-04-20 12:21:16 | INFO :  - file MIDI-Unprocessed_21_R1_2006_01-04_ORIG_MID--AUDIO_21_R1_2006_01_Track01_wav.npy added to training set.
+2021-04-20 12:21:31 | INFO :  - file MIDI-Unprocessed_SMF_17_R1_2004_01-03_ORIG_MID--AUDIO_17_R1_2004_02_Track02_wav--2.npy added to training set.
+2021-04-20 12:21:56 | INFO :  - file MIDI-Unprocessed_04_R3_2008_01-07_ORIG_MID--AUDIO_04_R3_2008_wav--1.npy added to training set.
+2021-04-20 12:23:09 | INFO :  - file MIDI-Unprocessed_05_R1_2009_03-05_ORIG_MID--AUDIO_05_R1_2009_05_R1_2009_03_WAV.npy added to training set.
+2021-04-20 12:23:32 | INFO :  - file MIDI-Unprocessed_062_PIANO062_MID--AUDIO-split_07-07-17_Piano-e_2-07_wav--4.npy added to training set.
+2021-04-20 12:24:41 | INFO :  - file MIDI-Unprocessed_01_R1_2006_01-09_ORIG_MID--AUDIO_01_R1_2006_01_Track01_wav.npy added to training set.
+2021-04-20 12:24:52 | INFO :  - file MIDI-Unprocessed_07_R2_2006_01_ORIG_MID--AUDIO_07_R2_2006_03_Track03_wav.npy added to training set.
+2021-04-20 12:25:35 | INFO :  - file MIDI-Unprocessed_10_R1_2009_01-02_ORIG_MID--AUDIO_10_R1_2009_10_R1_2009_02_WAV.npy added to training set.
+2021-04-20 12:25:49 | INFO :  - file MIDI-Unprocessed_09_R1_2011_MID--AUDIO_R1-D3_12_Track12_wav.npy added to training set.
+2021-04-20 12:26:16 | INFO :  - file MIDI-Unprocessed_SMF_17_R1_2004_01-02_ORIG_MID--AUDIO_20_R2_2004_04_Track04_wav.npy added to training set.
+2021-04-20 12:26:25 | INFO :  - file MIDI-Unprocessed_R1_D1-1-8_mid--AUDIO-from_mp3_01_R1_2015_wav--3.npy added to training set.
+2021-04-20 12:26:46 | INFO :  - file MIDI-Unprocessed_10_R2_2008_01-05_ORIG_MID--AUDIO_10_R2_2008_wav--3.npy added to training set.
+2021-04-20 12:26:53 | INFO :  - file MIDI-Unprocessed_01_R1_2011_MID--AUDIO_R1-D1_03_Track03_wav.npy added to training set.
+2021-04-20 12:27:55 | INFO :  - file MIDI-Unprocessed_Chamber5_MID--AUDIO_18_R3_2018_wav--1.npy added to training set.
+2021-04-20 12:28:27 | INFO :  - file MIDI-Unprocessed_12_R1_2009_01-02_ORIG_MID--AUDIO_12_R1_2009_12_R1_2009_01_WAV.npy added to training set.
+2021-04-20 12:28:36 | INFO :  - file MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_17_R1_2015_wav--1.npy added to training set.
+2021-04-20 12:28:52 | INFO :  - file MIDI-Unprocessed_24_R1_2011_MID--AUDIO_R1-D9_09_Track09_wav.npy added to training set.
+2021-04-20 12:29:13 | INFO :  - file MIDI-Unprocessed_20_R1_2011_MID--AUDIO_R1-D8_04_Track04_wav.npy added to training set.
+2021-04-20 12:29:38 | INFO :  - file MIDI-Unprocessed_XP_04_R1_2004_01-02_ORIG_MID--AUDIO_04_R1_2004_02_Track02_wav.npy added to training set.
+2021-04-20 12:29:44 | INFO :  - file MIDI-Unprocessed_R1_D2-13-20_mid--AUDIO-from_mp3_14_R1_2015_wav--4.npy added to training set.
+2021-04-20 12:30:06 | INFO :  - file ORIG-MIDI_03_7_8_13_Group__MID--AUDIO_19_R2_2013_wav--3.npy added to training set.
+2021-04-20 12:31:35 | INFO :  - file MIDI-UNPROCESSED_04-07-08-10-12-15-17_R2_2014_MID--AUDIO_17_R2_2014_wav.npy added to training set.
+2021-04-20 12:32:10 | INFO :  - file MIDI-Unprocessed_08_R1_2009_05-06_ORIG_MID--AUDIO_08_R1_2009_08_R1_2009_06_WAV.npy added to training set.
+2021-04-20 12:32:34 | INFO :  - file MIDI-Unprocessed_21_R1_2011_MID--AUDIO_R1-D8_08_Track08_wav.npy added to training set.
+2021-04-20 12:32:43 | INFO :  - file ORIG-MIDI_02_7_7_13_Group__MID--AUDIO_15_R1_2013_wav--3.npy added to training set.
+2021-04-20 12:32:48 | INFO :  - file MIDI-Unprocessed_05_R1_2011_MID--AUDIO_R1-D2_08_Track08_wav.npy added to training set.
+2021-04-20 12:33:12 | INFO :  - file MIDI-Unprocessed_075_PIANO075_MID--AUDIO-split_07-08-17_Piano-e_2-06_wav--1.npy added to training set.
+2021-04-20 12:33:24 | INFO :  - file MIDI-Unprocessed_06_R1_2011_MID--AUDIO_R1-D2_15_Track15_wav.npy added to training set.
+2021-04-20 12:33:38 | INFO :  - file MIDI-Unprocessed_Recital1-3_MID--AUDIO_01_R1_2018_wav--1.npy added to training set.
+2021-04-20 12:33:44 | INFO :  - file MIDI-UNPROCESSED_01-03_R1_2014_MID--AUDIO_03_R1_2014_wav--2.npy added to validation set.
+2021-04-20 12:33:57 | INFO :  - file ORIG-MIDI_01_7_6_13_Group__MID--AUDIO_03_R1_2013_wav--4.npy added to validation set.
+2021-04-20 12:34:10 | INFO :  - file MIDI-Unprocessed_R1_D1-1-8_mid--AUDIO-from_mp3_05_R1_2015_wav--1.npy added to validation set.
+2021-04-20 12:34:50 | INFO :  - file MIDI-Unprocessed_073_PIANO073_MID--AUDIO-split_07-08-17_Piano-e_2-02_wav--4.npy added to validation set.
+2021-04-20 12:35:13 | INFO :  - file MIDI-Unprocessed_08_R1_2006_01-04_ORIG_MID--AUDIO_08_R1_2006_Disk1_02_Track02_wav.npy added to validation set.
+2021-04-20 12:35:23 | INFO :  - file MIDI-Unprocessed_14_R1_2011_MID--AUDIO_R1-D6_02_Track02_wav.npy added to validation set.
+2021-04-20 12:35:40 | INFO :  - file MIDI-Unprocessed_07_R1_2009_04-05_ORIG_MID--AUDIO_07_R1_2009_07_R1_2009_04_WAV.npy added to validation set.
+2021-04-20 12:36:34 | INFO :  - file MIDI-Unprocessed_XP_10_R1_2004_01-02_ORIG_MID--AUDIO_10_R1_2004_02_Track02_wav.npy added to validation set.
+2021-04-20 12:36:44 | INFO :  - file MIDI-Unprocessed_083_PIANO083_MID--AUDIO-split_07-09-17_Piano-e_2_-06_wav--5.npy added to validation set.
+2021-04-20 12:36:59 | INFO :  - file MIDI-Unprocessed_19_R1_2006_01-07_ORIG_MID--AUDIO_19_R1_2006_07_Track07_wav.npy added to validation set.
+2021-04-20 12:37:08 | INFO :  - file MIDI-Unprocessed_XP_19_R1_2004_01-02_ORIG_MID--AUDIO_19_R1_2004_01_Track01_wav.npy added to validation set.
+2021-04-20 12:37:55 | INFO :  - file MIDI-UNPROCESSED_04-05_R1_2014_MID--AUDIO_04_R1_2014_wav--3.npy added to validation set.
+2021-04-20 12:38:35 | INFO :  - file MIDI-Unprocessed_Recital4_MID--AUDIO_04_R1_2018_wav--4.npy added to validation set.
+2021-04-20 12:38:49 | INFO :  - file ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_06_R1_2013_wav--4.npy added to validation set.
+2021-04-20 12:39:18 | INFO :  - file MIDI-Unprocessed_Recital4_MID--AUDIO_04_R1_2018_wav--3.npy added to validation set.
+2021-04-20 12:39:41 | INFO :  - file MIDI-Unprocessed_21_R1_2011_MID--AUDIO_R1-D8_10_Track10_wav.npy added to validation set.
+2021-04-20 12:39:45 | INFO :  - file MIDI-Unprocessed_060_PIANO060_MID--AUDIO-split_07-07-17_Piano-e_2-04_wav--3.npy added to validation set.
+2021-04-20 12:39:58 | INFO :  - file MIDI-Unprocessed_07_R1_2008_01-04_ORIG_MID--AUDIO_07_R1_2008_wav--2.npy added to validation set.
+2021-04-20 12:40:20 | INFO :  - file MIDI-Unprocessed_13_R1_2006_01-06_ORIG_MID--AUDIO_13_R1_2006_05_Track05_wav.npy added to validation set.
+2021-04-20 12:42:01 | INFO :  - file MIDI-Unprocessed_Recital1-3_MID--AUDIO_02_R1_2018_wav--1.npy added to validation set.
+2021-04-20 12:42:22 | INFO :  - file MIDI-Unprocessed_XP_01_R1_2004_04-05_ORIG_MID--AUDIO_01_R1_2004_05_Track05_wav.npy added to validation set.
+2021-04-20 12:42:41 | INFO :  - file MIDI-Unprocessed_05_R1_2008_01-04_ORIG_MID--AUDIO_05_R1_2008_wav--1.npy added to validation set.
+2021-04-20 12:42:41 | INFO : Training set & loader generated, length 84359
+2021-04-20 12:42:41 | INFO : Validation set & loader generated, length 11469
+2021-04-20 12:42:41 | INFO : 
+ 
+ ###################### START TRAINING ###################### 
+
+2021-04-20 12:44:18 | INFO : Epoch #0 finished. Train Loss: 0.1531, Val Loss: 0.1286 with lr: 0.01000
+2021-04-20 12:44:19 | INFO :   .... model of epoch 0 saved.
+2021-04-20 12:45:47 | INFO : Epoch #1 finished. Train Loss: 0.1337, Val Loss: 0.1228 with lr: 0.01000
+2021-04-20 12:45:47 | INFO :   .... model of epoch #1 saved.
+2021-04-20 12:47:16 | INFO : Epoch #2 finished. Train Loss: 0.1299, Val Loss: 0.1250 with lr: 0.01000
+2021-04-20 12:48:44 | INFO : Epoch #3 finished. Train Loss: 0.1279, Val Loss: 0.1180 with lr: 0.01000
+2021-04-20 12:48:44 | INFO :   .... model of epoch #3 saved.
+2021-04-20 12:50:12 | INFO : Epoch #4 finished. Train Loss: 0.1261, Val Loss: 0.1179 with lr: 0.01000
+2021-04-20 12:50:12 | INFO :   .... model of epoch #4 saved.
+2021-04-20 12:51:40 | INFO : Epoch #5 finished. Train Loss: 0.1248, Val Loss: 0.1158 with lr: 0.01000
+2021-04-20 12:51:40 | INFO :   .... model of epoch #5 saved.
+2021-04-20 12:53:08 | INFO : Epoch #6 finished. Train Loss: 0.1238, Val Loss: 0.1151 with lr: 0.01000
+2021-04-20 12:53:08 | INFO :   .... model of epoch #6 saved.
+2021-04-20 12:54:36 | INFO : Epoch #7 finished. Train Loss: 0.1233, Val Loss: 0.1149 with lr: 0.01000
+2021-04-20 12:54:36 | INFO :   .... model of epoch #7 saved.
+2021-04-20 12:56:04 | INFO : Epoch #8 finished. Train Loss: 0.1225, Val Loss: 0.1139 with lr: 0.01000
+2021-04-20 12:56:04 | INFO :   .... model of epoch #8 saved.
+2021-04-20 12:57:32 | INFO : Epoch #9 finished. Train Loss: 0.1222, Val Loss: 0.1132 with lr: 0.01000
+2021-04-20 12:57:32 | INFO :   .... model of epoch #9 saved.
+2021-04-20 12:59:00 | INFO : Epoch #10 finished. Train Loss: 0.1217, Val Loss: 0.1133 with lr: 0.01000
+2021-04-20 13:00:28 | INFO : Epoch #11 finished. Train Loss: 0.1212, Val Loss: 0.1137 with lr: 0.01000
+2021-04-20 13:01:56 | INFO : Epoch #12 finished. Train Loss: 0.1208, Val Loss: 0.1124 with lr: 0.01000
+2021-04-20 13:01:56 | INFO :   .... model of epoch #12 saved.
+2021-04-20 13:03:24 | INFO : Epoch #13 finished. Train Loss: 0.1205, Val Loss: 0.1130 with lr: 0.01000
+2021-04-20 13:04:52 | INFO : Epoch #14 finished. Train Loss: 0.1204, Val Loss: 0.1120 with lr: 0.01000
+2021-04-20 13:04:52 | INFO :   .... model of epoch #14 saved.
+2021-04-20 13:06:20 | INFO : Epoch #15 finished. Train Loss: 0.1202, Val Loss: 0.1117 with lr: 0.01000
+2021-04-20 13:06:20 | INFO :   .... model of epoch #15 saved.
+2021-04-20 13:07:48 | INFO : Epoch #16 finished. Train Loss: 0.1200, Val Loss: 0.1127 with lr: 0.01000
+2021-04-20 13:09:16 | INFO : Epoch #17 finished. Train Loss: 0.1197, Val Loss: 0.1124 with lr: 0.01000
+2021-04-20 13:10:44 | INFO : Epoch #18 finished. Train Loss: 0.1195, Val Loss: 0.1121 with lr: 0.01000
+2021-04-20 13:12:12 | INFO : Epoch #19 finished. Train Loss: 0.1194, Val Loss: 0.1118 with lr: 0.01000
+2021-04-20 13:13:40 | INFO : Epoch #20 finished. Train Loss: 0.1192, Val Loss: 0.1111 with lr: 0.01000
+2021-04-20 13:13:40 | INFO :   .... model of epoch #20 saved.
+2021-04-20 13:15:08 | INFO : Epoch #21 finished. Train Loss: 0.1190, Val Loss: 0.1110 with lr: 0.01000
+2021-04-20 13:15:08 | INFO :   .... model of epoch #21 saved.
+2021-04-20 13:16:36 | INFO : Epoch #22 finished. Train Loss: 0.1188, Val Loss: 0.1109 with lr: 0.01000
+2021-04-20 13:16:36 | INFO :   .... model of epoch #22 saved.
+2021-04-20 13:18:04 | INFO : Epoch #23 finished. Train Loss: 0.1188, Val Loss: 0.1118 with lr: 0.01000
+2021-04-20 13:19:33 | INFO : Epoch #24 finished. Train Loss: 0.1189, Val Loss: 0.1112 with lr: 0.01000
+2021-04-20 13:21:01 | INFO : Epoch #25 finished. Train Loss: 0.1186, Val Loss: 0.1109 with lr: 0.01000
+2021-04-20 13:22:29 | INFO : Epoch #26 finished. Train Loss: 0.1184, Val Loss: 0.1113 with lr: 0.01000
+2021-04-20 13:23:57 | INFO : Epoch #27 finished. Train Loss: 0.1185, Val Loss: 0.1111 with lr: 0.01000
+2021-04-20 13:25:25 | INFO : Epoch #28 finished. Train Loss: 0.1182, Val Loss: 0.1123 with lr: 0.01000
+2021-04-20 13:26:53 | INFO : Epoch #29 finished. Train Loss: 0.1175, Val Loss: 0.1101 with lr: 0.00500
+2021-04-20 13:26:53 | INFO :   .... model of epoch #29 saved.
+2021-04-20 13:28:21 | INFO : Epoch #30 finished. Train Loss: 0.1173, Val Loss: 0.1106 with lr: 0.00500
+2021-04-20 13:29:49 | INFO : Epoch #31 finished. Train Loss: 0.1175, Val Loss: 0.1097 with lr: 0.00500
+2021-04-20 13:29:49 | INFO :   .... model of epoch #31 saved.
+2021-04-20 13:31:17 | INFO : Epoch #32 finished. Train Loss: 0.1172, Val Loss: 0.1098 with lr: 0.00500
+2021-04-20 13:32:45 | INFO : Epoch #33 finished. Train Loss: 0.1173, Val Loss: 0.1100 with lr: 0.00500
+2021-04-20 13:34:14 | INFO : Epoch #34 finished. Train Loss: 0.1173, Val Loss: 0.1104 with lr: 0.00500
+2021-04-20 13:35:42 | INFO : Epoch #35 finished. Train Loss: 0.1171, Val Loss: 0.1098 with lr: 0.00500
+2021-04-20 13:37:10 | INFO : Epoch #36 finished. Train Loss: 0.1172, Val Loss: 0.1100 with lr: 0.00500
+2021-04-20 13:38:38 | INFO : Epoch #37 finished. Train Loss: 0.1170, Val Loss: 0.1102 with lr: 0.00500
+2021-04-20 13:40:06 | INFO : Epoch #38 finished. Train Loss: 0.1168, Val Loss: 0.1093 with lr: 0.00250
+2021-04-20 13:40:06 | INFO :   .... model of epoch #38 saved.
+2021-04-20 13:41:35 | INFO : Epoch #39 finished. Train Loss: 0.1169, Val Loss: 0.1096 with lr: 0.00250
+2021-04-20 13:43:03 | INFO : Epoch #40 finished. Train Loss: 0.1166, Val Loss: 0.1096 with lr: 0.00250
+2021-04-20 13:44:32 | INFO : Epoch #41 finished. Train Loss: 0.1165, Val Loss: 0.1092 with lr: 0.00250
+2021-04-20 13:44:32 | INFO :   .... model of epoch #41 saved.
+2021-04-20 13:46:00 | INFO : Epoch #42 finished. Train Loss: 0.1166, Val Loss: 0.1092 with lr: 0.00250
+2021-04-20 13:46:00 | INFO :   .... model of epoch #42 saved.
+2021-04-20 13:47:29 | INFO : Epoch #43 finished. Train Loss: 0.1167, Val Loss: 0.1092 with lr: 0.00250
+2021-04-20 13:48:57 | INFO : Epoch #44 finished. Train Loss: 0.1162, Val Loss: 0.1095 with lr: 0.00250
+2021-04-20 13:50:25 | INFO : Epoch #45 finished. Train Loss: 0.1164, Val Loss: 0.1095 with lr: 0.00250
+2021-04-20 13:51:53 | INFO : Epoch #46 finished. Train Loss: 0.1165, Val Loss: 0.1096 with lr: 0.00250
+2021-04-20 13:53:22 | INFO : Epoch #47 finished. Train Loss: 0.1164, Val Loss: 0.1094 with lr: 0.00250
+2021-04-20 13:54:50 | INFO : Epoch #48 finished. Train Loss: 0.1165, Val Loss: 0.1098 with lr: 0.00250
+2021-04-20 13:56:18 | INFO : Epoch #49 finished. Train Loss: 0.1162, Val Loss: 0.1094 with lr: 0.00125
+2021-04-20 13:57:46 | INFO : Epoch #50 finished. Train Loss: 0.1162, Val Loss: 0.1092 with lr: 0.00125
+2021-04-20 13:59:14 | INFO : Epoch #51 finished. Train Loss: 0.1163, Val Loss: 0.1093 with lr: 0.00125
+2021-04-20 14:00:42 | INFO : Epoch #52 finished. Train Loss: 0.1162, Val Loss: 0.1091 with lr: 0.00125
+2021-04-20 14:00:42 | INFO :   .... model of epoch #52 saved.
+2021-04-20 14:02:10 | INFO : Epoch #53 finished. Train Loss: 0.1160, Val Loss: 0.1089 with lr: 0.00125
+2021-04-20 14:02:10 | INFO :   .... model of epoch #53 saved.
+2021-04-20 14:03:38 | INFO : Epoch #54 finished. Train Loss: 0.1163, Val Loss: 0.1094 with lr: 0.00125
+2021-04-20 14:05:06 | INFO : Epoch #55 finished. Train Loss: 0.1161, Val Loss: 0.1097 with lr: 0.00125
+2021-04-20 14:06:35 | INFO : Epoch #56 finished. Train Loss: 0.1161, Val Loss: 0.1092 with lr: 0.00125
+2021-04-20 14:08:03 | INFO : Epoch #57 finished. Train Loss: 0.1161, Val Loss: 0.1096 with lr: 0.00125
+2021-04-20 14:09:31 | INFO : Epoch #58 finished. Train Loss: 0.1161, Val Loss: 0.1092 with lr: 0.00125
+2021-04-20 14:10:59 | INFO : Epoch #59 finished. Train Loss: 0.1161, Val Loss: 0.1095 with lr: 0.00125
+2021-04-20 14:12:27 | INFO : Epoch #60 finished. Train Loss: 0.1159, Val Loss: 0.1093 with lr: 0.00063
+2021-04-20 14:13:56 | INFO : Epoch #61 finished. Train Loss: 0.1159, Val Loss: 0.1095 with lr: 0.00063
+2021-04-20 14:15:25 | INFO : Epoch #62 finished. Train Loss: 0.1159, Val Loss: 0.1086 with lr: 0.00063
+2021-04-20 14:15:25 | INFO :   .... model of epoch #62 saved.
+2021-04-20 14:16:53 | INFO : Epoch #63 finished. Train Loss: 0.1159, Val Loss: 0.1096 with lr: 0.00063
+2021-04-20 14:18:22 | INFO : Epoch #64 finished. Train Loss: 0.1159, Val Loss: 0.1091 with lr: 0.00063
+2021-04-20 14:19:50 | INFO : Epoch #65 finished. Train Loss: 0.1159, Val Loss: 0.1088 with lr: 0.00063
+2021-04-20 14:21:19 | INFO : Epoch #66 finished. Train Loss: 0.1159, Val Loss: 0.1091 with lr: 0.00063
+2021-04-20 14:22:47 | INFO : Epoch #67 finished. Train Loss: 0.1160, Val Loss: 0.1092 with lr: 0.00063
+2021-04-20 14:24:15 | INFO : Epoch #68 finished. Train Loss: 0.1159, Val Loss: 0.1089 with lr: 0.00063
+2021-04-20 14:25:44 | INFO : Epoch #69 finished. Train Loss: 0.1157, Val Loss: 0.1092 with lr: 0.00031
+2021-04-20 14:27:12 | INFO : Epoch #70 finished. Train Loss: 0.1159, Val Loss: 0.1090 with lr: 0.00031
+2021-04-20 14:28:40 | INFO : Epoch #71 finished. Train Loss: 0.1159, Val Loss: 0.1092 with lr: 0.00031
+2021-04-20 14:30:10 | INFO : Epoch #72 finished. Train Loss: 0.1158, Val Loss: 0.1087 with lr: 0.00031
+2021-04-20 14:31:38 | INFO : Epoch #73 finished. Train Loss: 0.1159, Val Loss: 0.1091 with lr: 0.00031
+2021-04-20 14:33:06 | INFO : Epoch #74 finished. Train Loss: 0.1158, Val Loss: 0.1085 with lr: 0.00031
+2021-04-20 14:33:06 | INFO :   .... model of epoch #74 saved.
+2021-04-20 14:34:35 | INFO : Epoch #75 finished. Train Loss: 0.1157, Val Loss: 0.1093 with lr: 0.00031
+2021-04-20 14:36:04 | INFO : Epoch #76 finished. Train Loss: 0.1158, Val Loss: 0.1088 with lr: 0.00031
+2021-04-20 14:37:32 | INFO : Epoch #77 finished. Train Loss: 0.1158, Val Loss: 0.1090 with lr: 0.00031
+2021-04-20 14:39:01 | INFO : Epoch #78 finished. Train Loss: 0.1158, Val Loss: 0.1089 with lr: 0.00031
+2021-04-20 14:40:29 | INFO : Epoch #79 finished. Train Loss: 0.1157, Val Loss: 0.1094 with lr: 0.00031
+2021-04-20 14:41:58 | INFO : Epoch #80 finished. Train Loss: 0.1156, Val Loss: 0.1088 with lr: 0.00031
+2021-04-20 14:43:27 | INFO : Epoch #81 finished. Train Loss: 0.1156, Val Loss: 0.1089 with lr: 0.00016
+2021-04-20 14:44:55 | INFO : Epoch #82 finished. Train Loss: 0.1156, Val Loss: 0.1089 with lr: 0.00016
+2021-04-20 14:46:24 | INFO : Epoch #83 finished. Train Loss: 0.1157, Val Loss: 0.1084 with lr: 0.00016
+2021-04-20 14:46:24 | INFO :   .... model of epoch #83 saved.
+2021-04-20 14:47:53 | INFO : Epoch #84 finished. Train Loss: 0.1158, Val Loss: 0.1088 with lr: 0.00016
+2021-04-20 14:49:22 | INFO : Epoch #85 finished. Train Loss: 0.1156, Val Loss: 0.1088 with lr: 0.00016
+2021-04-20 14:50:50 | INFO : Epoch #86 finished. Train Loss: 0.1155, Val Loss: 0.1087 with lr: 0.00016
+2021-04-20 14:52:19 | INFO : Epoch #87 finished. Train Loss: 0.1159, Val Loss: 0.1089 with lr: 0.00016
+2021-04-20 14:53:47 | INFO : Epoch #88 finished. Train Loss: 0.1157, Val Loss: 0.1094 with lr: 0.00016
+2021-04-20 14:55:16 | INFO : Epoch #89 finished. Train Loss: 0.1156, Val Loss: 0.1092 with lr: 0.00016
+2021-04-20 14:56:45 | INFO : Epoch #90 finished. Train Loss: 0.1158, Val Loss: 0.1089 with lr: 0.00008
+2021-04-20 14:58:14 | INFO : Epoch #91 finished. Train Loss: 0.1158, Val Loss: 0.1088 with lr: 0.00008
+2021-04-20 14:59:42 | INFO : Epoch #92 finished. Train Loss: 0.1157, Val Loss: 0.1092 with lr: 0.00008
+2021-04-20 15:01:11 | INFO : Epoch #93 finished. Train Loss: 0.1159, Val Loss: 0.1086 with lr: 0.00008
+2021-04-20 15:02:40 | INFO : Epoch #94 finished. Train Loss: 0.1158, Val Loss: 0.1090 with lr: 0.00008
+2021-04-20 15:04:09 | INFO : Epoch #95 finished. Train Loss: 0.1159, Val Loss: 0.1086 with lr: 0.00008
+2021-04-20 15:04:09 | INFO :  ### trained model saved in /ldaphome/cweiss/models/exp122cS_traintest_maestro_aligned_pitch_basiccnn_segmmodel.pt 
+
+2021-04-20 15:04:09 | INFO : 
+ 
+ ###################### START TESTING ###################### 
+
+2021-04-20 15:05:31 | INFO : file MIDI-UNPROCESSED_19-20_R1_2014_MID--AUDIO_19_R1_2014_wav--8.npy tested. Cosine sim: 0.6981173716580816
+2021-04-20 15:06:19 | INFO : file MIDI-Unprocessed_XP_03_R1_2004_01-02_ORIG_MID--AUDIO_03_R1_2004_01_Track01_wav.npy tested. Cosine sim: 0.8353609184315018
+2021-04-20 15:06:37 | INFO : file ORIG-MIDI_02_7_6_13_Group__MID--AUDIO_08_R1_2013_wav--5.npy tested. Cosine sim: 0.5991975381292206
+2021-04-20 15:06:56 | INFO : file MIDI-Unprocessed_12_R3_2008_01-04_ORIG_MID--AUDIO_12_R3_2008_wav--3.npy tested. Cosine sim: 0.8064374943827172
+2021-04-20 15:07:41 | INFO : file ORIG-MIDI_01_7_7_13_Group__MID--AUDIO_11_R1_2013_wav--1.npy tested. Cosine sim: 0.8608245258089521
+2021-04-20 15:08:04 | INFO : file MIDI-Unprocessed_18_R1_2011_MID--AUDIO_R1-D7_07_Track07_wav.npy tested. Cosine sim: 0.7901309139277679
+2021-04-20 15:08:41 | INFO : file MIDI-Unprocessed_056_PIANO056_MID--AUDIO-split_07-07-17_Piano-e_1-05_wav--1.npy tested. Cosine sim: 0.8322118000456994
+2021-04-20 15:09:27 | INFO : file MIDI-Unprocessed_09_R1_2008_01-05_ORIG_MID--AUDIO_09_R1_2008_wav--2.npy tested. Cosine sim: 0.6935887570920286
+2021-04-20 15:10:31 | INFO : file MIDI-Unprocessed_16_R1_2006_01-04_ORIG_MID--AUDIO_16_R1_2006_02_Track02_wav.npy tested. Cosine sim: 0.7820103538280586
+2021-04-20 15:11:29 | INFO : file MIDI-Unprocessed_044_PIANO044_MID--AUDIO-split_07-06-17_Piano-e_1-04_wav--2.npy tested. Cosine sim: 0.8119966848356096
+2021-04-20 15:12:02 | INFO : file MIDI-Unprocessed_08_R1_2009_01-04_ORIG_MID--AUDIO_08_R1_2009_08_R1_2009_04_WAV.npy tested. Cosine sim: 0.7932585537250973
+2021-04-20 15:13:35 | INFO : file MIDI-Unprocessed_01_R1_2009_01-04_ORIG_MID--AUDIO_01_R1_2009_01_R1_2009_04_WAV.npy tested. Cosine sim: 0.8101751142221526
+2021-04-20 15:15:35 | INFO : file MIDI-Unprocessed_XP_15_R1_2004_03_ORIG_MID--AUDIO_15_R1_2004_03_Track03_wav.npy tested. Cosine sim: 0.6975607581972619
+2021-04-20 15:17:37 | INFO : file MIDI-Unprocessed_07_R1_2006_01-04_ORIG_MID--AUDIO_07_R1_2006_04_Track04_wav.npy tested. Cosine sim: 0.7121968642284343
+2021-04-20 15:18:29 | INFO : file MIDI-Unprocessed_04_R2_2008_01-04_ORIG_MID--AUDIO_04_R2_2008_wav--3.npy tested. Cosine sim: 0.8112974327789367
+2021-04-20 15:20:18 | INFO : file MIDI-Unprocessed_03_R1_2006_01-05_ORIG_MID--AUDIO_03_R1_2006_04_Track04_wav.npy tested. Cosine sim: 0.8106806042654725
+2021-04-20 15:20:57 | INFO : file MIDI-Unprocessed_02_R2_2011_MID--AUDIO_R2-D1_02_Track02_wav.npy tested. Cosine sim: 0.6846655763500444
+2021-04-20 15:22:21 | INFO : file MIDI-Unprocessed_19_R1_2011_MID--AUDIO_R1-D7_15_Track15_wav.npy tested. Cosine sim: 0.7642460189988887
+2021-04-20 15:22:53 | INFO : file MIDI-Unprocessed_17_R1_2008_01-04_ORIG_MID--AUDIO_17_R1_2008_wav--2.npy tested. Cosine sim: 0.5959310680408171
+2021-04-20 15:23:22 | INFO : file ORIG-MIDI_01_7_7_13_Group__MID--AUDIO_11_R1_2013_wav--4.npy tested. Cosine sim: 0.6676075493605702
+2021-04-20 15:24:01 | INFO : file MIDI-Unprocessed_08_R1_2008_01-05_ORIG_MID--AUDIO_08_R1_2008_wav--2.npy tested. Cosine sim: 0.7320618322831595
+2021-04-20 15:24:22 | INFO : file MIDI-Unprocessed_XP_04_R1_2004_03-05_ORIG_MID--AUDIO_04_R1_2004_06_Track06_wav.npy tested. Cosine sim: 0.7064221599840748
+2021-04-20 15:24:43 | INFO : file MIDI-Unprocessed_11_R1_2009_06-09_ORIG_MID--AUDIO_11_R1_2009_11_R1_2009_07_WAV.npy tested. Cosine sim: 0.7555555167628855
+2021-04-20 15:25:26 | INFO : file MIDI-Unprocessed_057_PIANO057_MID--AUDIO-split_07-07-17_Piano-e_1-07_wav--3.npy tested. Cosine sim: 0.8376072972966865
+2021-04-20 15:26:14 | INFO : file MIDI-Unprocessed_05_R1_2008_01-04_ORIG_MID--AUDIO_05_R1_2008_wav--3.npy tested. Cosine sim: 0.7805217074548578
+2021-04-20 15:26:55 | INFO : file MIDI-Unprocessed_12_R1_2008_01-04_ORIG_MID--AUDIO_12_R1_2008_wav--1.npy tested. Cosine sim: 0.7298759159120887
+2021-04-20 15:27:29 | INFO : file MIDI-Unprocessed_04_R3_2008_01-07_ORIG_MID--AUDIO_04_R3_2008_wav--6.npy tested. Cosine sim: 0.7511552149720341
+2021-04-20 15:27:46 | INFO : file MIDI-Unprocessed_R2_D1-2-3-6-7-8-11_mid--AUDIO-from_mp3_03_R2_2015_wav--1.npy tested. Cosine sim: 0.8368879895139452
+2021-04-20 15:28:27 | INFO : file ORIG-MIDI_01_7_6_13_Group__MID--AUDIO_01_R1_2013_wav--4.npy tested. Cosine sim: 0.7004878199440445
+2021-04-20 15:28:27 | INFO : ### Testing done. Results: ######################################## 
+
+2021-04-20 15:28:27 | INFO : Mean precision:   0.7286468085632646
+2021-04-20 15:28:27 | INFO : Mean recall:   0.7657302847867521
+2021-04-20 15:28:27 | INFO : Mean f_measure:   0.7403139582755794
+2021-04-20 15:28:27 | INFO : Mean cosine_sim:   0.7547610811183133
+2021-04-20 15:28:27 | INFO : Mean binary_crossentropy:   0.13953585566460333
+2021-04-20 15:28:27 | INFO : Mean euclidean_distance:   1.214340161529131
+2021-04-20 15:28:27 | INFO : Mean binary_accuracy:   0.9651344264839704
+2021-04-20 15:28:27 | INFO : Mean soft_accuracy:   0.9376789068366576
+2021-04-20 15:28:27 | INFO : Mean accum_energy:   0.5789406904765797
+2021-04-20 15:28:27 | INFO : Mean roc_auc_measure:   0.9744080580272572
+2021-04-20 15:28:27 | INFO : Mean average_precision_score:   0.8112399898690983
+2021-04-20 15:28:27 | INFO : Mean Precision:   0.7286468085632646
+2021-04-20 15:28:27 | INFO : Mean Recall:   0.7657302847867521
+2021-04-20 15:28:27 | INFO : Mean Accuracy:   0.5905200681697017
+2021-04-20 15:28:27 | INFO : Mean Substitution Error:   0.07517896367474687
+2021-04-20 15:28:27 | INFO : Mean Miss Error:   0.15909075153850105
+2021-04-20 15:28:27 | INFO : Mean False Alarm Error:   0.22488166631125522
+2021-04-20 15:28:27 | INFO : Mean Total Error:   0.4591513815245032
+2021-04-20 15:28:27 | INFO : Mean Chroma Precision:   0.7543248120768999
+2021-04-20 15:28:27 | INFO : Mean Chroma Recall:   0.7915504514516798
+2021-04-20 15:28:27 | INFO : Mean Chroma Accuracy:   0.6230303251816229
+2021-04-20 15:28:27 | INFO : Mean Chroma Substitution Error:   0.049358797009819384
+2021-04-20 15:28:27 | INFO : Mean Chroma Miss Error:   0.15909075153850105
+2021-04-20 15:28:27 | INFO : Mean Chroma False Alarm Error:   0.22488166631125522
+2021-04-20 15:28:27 | INFO : Mean Chroma Total Error:   0.4333312148595757
+2021-04-20 15:28:27 | INFO : 
+
+2021-04-20 15:28:27 | INFO : Framewise precision:   0.7295249000133531
+2021-04-20 15:28:27 | INFO : Framewise recall:   0.7704024482676731
+2021-04-20 15:28:27 | INFO : Framewise f_measure:   0.744264532536184
+2021-04-20 15:28:27 | INFO : Framewise cosine_sim:   0.7566230397268934
+2021-04-20 15:28:27 | INFO : Framewise binary_crossentropy:   0.1411129491421649
+2021-04-20 15:28:27 | INFO : Framewise euclidean_distance:   1.2200815187688376
+2021-04-20 15:28:27 | INFO : Framewise binary_accuracy:   0.964577958916562
+2021-04-20 15:28:27 | INFO : Framewise soft_accuracy:   0.936585816111992
+2021-04-20 15:28:27 | INFO : Framewise accum_energy:   0.5807943268450779
+2021-04-20 15:28:27 | INFO : Framewise roc_auc_measure:   0.9741405864878252
+2021-04-20 15:28:27 | INFO : Framewise average_precision_score:   0.8162030181709118
+2021-04-20 15:28:27 | INFO : Framewise Precision:   0.7295249000133531
+2021-04-20 15:28:27 | INFO : Framewise Recall:   0.7704024482676731
+2021-04-20 15:28:27 | INFO : Framewise Accuracy:   0.5952913976818568
+2021-04-20 15:28:27 | INFO : Framewise Substitution Error:   0.07536265487655693
+2021-04-20 15:28:27 | INFO : Framewise Miss Error:   0.15423489685576977
+2021-04-20 15:28:27 | INFO : Framewise False Alarm Error:   0.22206349614777082
+2021-04-20 15:28:27 | INFO : Framewise Total Error:   0.4516610478800975
+2021-04-20 15:28:27 | INFO : Framewise Chroma Precision:   0.7551490076050873
+2021-04-20 15:28:27 | INFO : Framewise Chroma Recall:   0.7963344419897413
+2021-04-20 15:28:27 | INFO : Framewise Chroma Accuracy:   0.6279290797340156
+2021-04-20 15:28:27 | INFO : Framewise Chroma Substitution Error:   0.04943066115448844
+2021-04-20 15:28:27 | INFO : Framewise Chroma Miss Error:   0.15423489685576977
+2021-04-20 15:28:27 | INFO : Framewise Chroma False Alarm Error:   0.22206349614777082
+2021-04-20 15:28:27 | INFO : Framewise Chroma Total Error:   0.4257290541580291
