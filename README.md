@@ -23,7 +23,7 @@ In the _experiments_ folder, all experimental scripts as well as the log files (
 The experiment files' names relate to the paper's results in the following way:
 
 ### Experiment 1 (Table 2) - Loss and Model variants
-exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt (Strongly-aligned training (BCE loss))
+* __exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt__ (Strongly-aligned training (BCE loss))
 * exp118b_traintest_schubert_sctcthreecomp_pitch.pt (Separable CTC (SCTC) loss)
 * exp118d_traintest_schubert_mctcnethreecomp_pitch.pt (Non-Epsilon MCTC (MCTC:NE) loss)
 * exp118e_traintest_schubert_mctcwe_pitch.pt (MCTC with epsilon (MCTC:WE) loss)
