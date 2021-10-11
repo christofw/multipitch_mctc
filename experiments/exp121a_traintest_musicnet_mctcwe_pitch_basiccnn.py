@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.append(os.curdir)
+basepath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(basepath)
 import numpy as np, os, scipy, scipy.spatial, matplotlib.pyplot as plt, IPython.display as ipd
 from itertools import groupby
 from numba import jit

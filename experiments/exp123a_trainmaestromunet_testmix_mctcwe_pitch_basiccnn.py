@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.append(os.curdir)
+basepath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(basepath)
 import numpy as np, os, scipy, scipy.spatial, matplotlib.pyplot as plt, IPython.display as ipd
 from itertools import groupby
 from numba import jit
@@ -151,7 +152,7 @@ if do_test:
 # Specify paths and splits #####################################################
 dataset_list = ['MusicNet', 'MAESTRO']
 test_dataset_list = ['Schubert_Winterreise', 'Bach10', 'TRIOS', 'PHENICX-Anechoic']
-path_data_basedir = os.path.join(os.curdir, 'data')
+path_data_basedir = os.path.join(basepath, 'data')
 
 path_data_list = [os.path.join(path_data_basedir, ds_name, 'hcqt_hs512_o6_h5_s1') for ds_name in dataset_list]
 path_annot_list = [os.path.join(path_data_basedir, ds_name, 'pitch_hs512_nooverl') for ds_name in dataset_list]
@@ -160,21 +161,21 @@ path_test_annot_list = [os.path.join(path_data_basedir, ds_name, 'pitch_hs512_no
 
 
 # Where to save models
-dir_models = os.path.join(os.curdir, 'models')
+dir_models = os.path.join(basepath, 'models')
 fn_model = expname + '.pt'
 path_trained_model = os.path.join(dir_models, fn_model)
 
 # Where to save results
-dir_output = os.path.join(os.curdir, 'experiments', 'results_filewise')
+dir_output = os.path.join(basepath, 'experiments', 'results_filewise')
 fn_output = expname + '.csv'
 path_output = os.path.join(dir_output, fn_output)
 
 # Where to save predictions
-dir_predictions = os.path.join(os.curdir, 'predictions', expname)
+dir_predictions = os.path.join(basepath, 'predictions', expname)
 
 # Where to save logs
 fn_log = expname + '.txt'
-path_log = os.path.join(os.curdir, 'experiments', 'logs', fn_log)
+path_log = os.path.join(basepath, 'experiments', 'logs', fn_log)
 
 # Log basic configuration
 logging.basicConfig(filename=path_log, filemode='w', format='%(asctime)s | %(levelname)s : %(message)s', datefmt='%Y-%m-%d %H:%M:%S', level=logging.INFO)
@@ -278,7 +279,7 @@ if do_train:
 path_data = path_data_list[1]
 path_annot = path_annot_list[1]
 
-csvfile_name = os.path.join(os.curdir, 'data', 'MAESTRO', 'maestro-v3.0.0.csv')
+csvfile_name = os.path.join(basepath, 'data', 'MAESTRO', 'maestro-v3.0.0.csv')
 df_filelist = pd.read_csv(csvfile_name, sep=',')
 print('Total files: ' + str(len(df_filelist)) + ' with total duration ' + str(np.sum(df_filelist['duration'])/60) + ' min')
 
