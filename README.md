@@ -16,9 +16,9 @@ For details and references, please see the paper.
 
 In this top folder, two Jupyter notebooks (_01_precompute_features_ and _02_predict_with_pretrained_model_) demonstrate how to preprocess audio files for running our models and how to load a pretrained model for predicting pitches.
 
-## Experiments from the paper (.py scripts)
+## Experiments from the paper (Python scripts)
 
-In the _experiments_ folder, all experimental scripts as well as the log files (subfolder _logs_) and the filewise results (subfolder _results_filewise_) can be found. The folder _models_pretrained_ contain pre-trained models for the main experiments. The subfolder _predictions_ contains exemplary model predictions for two of the experiments. Plese note that re-training requires a GPU and that any script must be started from the repository top folder path in order to get the relative paths working correctly.
+In the _experiments_ folder, all experimental scripts as well as the log files (subfolder _logs_) and the filewise results (subfolder _results_filewise_) can be found. The folder _models_pretrained_ contains pre-trained models for the main experiments. The subfolder _predictions_ contains exemplary model predictions for two of the experiments. Plese note that re-training requires a GPU as well as the pre-processed training data (see the notebook _01_precompute_features_ for an example). Any script must be started from the repository top folder path in order to get the relative paths working correctly.
 
 The experiment files' names relate to the paper's results in the following way:
 
@@ -41,3 +41,8 @@ The experiment files' names relate to the paper's results in the following way:
 * _exp124cS_trainmix_testmusicnet_aligned_pitch_basiccnn_segmmodel.pt_ (Test MusicNet, train others aligned)
 * _exp125a_trainmix_testmaestro_mctcwe_pitch_basiccnn.pt_ (Test MAESTRO, train others MCTC)
 * _exp125cS_trainmix_testmaestro_aligned_pitch_basiccnn_segmmodel.pt_ (Test MAESTRO, train others aligned)
+
+Run scripts using e.g. the following commands:
+__conda activate multipitch_mctc__
+__export CUDA_VISIBLE_DEVICES=1__
+__python experiments/exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt__
