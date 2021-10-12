@@ -1,4 +1,4 @@
-# Repository multipitch_mctc
+# multipitch_mctc
 
 This is a pytorch code repository accompanying the following paper:  
 
