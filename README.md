@@ -42,7 +42,7 @@ The experiment files' names relate to the paper's results in the following way:
 * _exp125a_trainmix_testmaestro_mctcwe_pitch_basiccnn.pt_ (Test MAESTRO, train others MCTC)
 * _exp125cS_trainmix_testmaestro_aligned_pitch_basiccnn_segmmodel.pt_ (Test MAESTRO, train others aligned)
 
-Run scripts using e.g. the following commands:
-__conda activate multipitch_mctc__
-__export CUDA_VISIBLE_DEVICES=1__
-__python experiments/exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt__
+Run scripts using e.g. the following commands:  
+__conda activate multipitch_mctc__  
+__export CUDA_VISIBLE_DEVICES=1__  
+__python experiments/exp112aS_traintest_schubert_aligned_pitch_nooverlap_segmmodel.pt__  
